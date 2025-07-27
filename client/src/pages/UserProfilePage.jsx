@@ -10,7 +10,7 @@ import { ArrowLeft, Home, Camera, User, Trophy, Zap, Target, Calendar } from "lu
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const UserProfilePage = () => {
-  const [profile, setProfile] = useState({
+  const [profile, setProfile] = useLocalStorage("focusflow-profile", {
     name: '',
     profession: '',
     age: '',
@@ -22,8 +22,8 @@ const UserProfilePage = () => {
     concerns: '',
   });
 
-  const [photo, setPhoto] = useState(null);
-  const [photoPreview, setPhotoPreview] = useState(null);
+  const [photo, setPhoto] = useLocalStorage("focusflow-profile-photo", null);
+  const [photoPreview, setPhotoPreview] = useLocalStorage("focusflow-profile-photo-preview", null);
 
   // Get data from localStorage for achievements
   const [tasks] = useLocalStorage("focusflow-tasks", []);
@@ -95,14 +95,21 @@ const UserProfilePage = () => {
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
-    setPhoto(file);
-    setPhotoPreview(URL.createObjectURL(file));
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64String = e.target.result;
+        setPhoto(file.name);
+        setPhotoPreview(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = () => {
-    // Backend integration goes here
+    // Profile data is automatically saved to localStorage via useLocalStorage hook
     console.log('Saved Profile:', profile);
-    alert('Profile saved successfully (fake save for now)');
+    alert('Profile saved successfully to local storage!');
   };
 
   return (
