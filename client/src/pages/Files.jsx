@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useStorageLimit } from "../hooks/useStorageLimit";
 
 export default function Files() {
   const [files, setFiles] = useLocalStorage("uploaded-files", []);
@@ -32,6 +33,16 @@ export default function Files() {
   const [showCreateFolder, setShowCreateFolder] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
   const fileInputRef = useRef();
+
+  const {
+    getCurrentStorageUsage,
+    getRemainingStorage,
+    getStorageUsagePercentage,
+    formatStorageSize,
+    canUploadFile,
+    getStorageWarningLevel,
+    STORAGE_LIMIT_GB
+  } = useStorageLimit();
 
   const getFileType = (fileName) => {
     if (!fileName || typeof fileName !== "string") return "file";
@@ -56,17 +67,34 @@ export default function Files() {
   };
 
   const handleFileUpload = (e) => {
-    const newFiles = Array.from(e.target.files).map((file) => ({
-      id: Date.now() + Math.random(),
-      name: file.name,
-      size: file.size,
-      type: file.type,
-      lastModified: file.lastModified,
-      uploadedAt: new Date().toISOString(),
-      folderId: currentFolder?.id || null,
-      file: file, // Keep reference to original file for download
-    }));
+    const newFiles = Array.from(e.target.files).map((file) => {
+
+      if (!canUploadFile(file.size)) {
+        alert(`Upload failed: Not enough storage space. You need ${formatStorageSize(file.size)} but only have ${formatStorageSize(getRemainingStorage())} remaining of your ${STORAGE_LIMIT_GB}GB limit.`);
+        return null;
+      }
+      return {
+        id: Date.now() + Math.random(),
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        lastModified: file.lastModified,
+        uploadedAt: new Date().toISOString(),
+        folderId: currentFolder?.id || null,
+        file: file, // Keep reference to original file for download
+      }
+    }).filter(file => file !== null);
+
     setFiles([...files, ...newFiles]);
+
+        // Show warning if approaching limit
+        const warningLevel = getStorageWarningLevel();
+        if (warningLevel === 'warning') {
+          alert(`Warning: You're using ${getStorageUsagePercentage().toFixed(1)}% of your ${STORAGE_LIMIT_GB}GB storage limit.`);
+        } else if (warningLevel === 'critical') {
+          alert(`Critical: You're using ${getStorageUsagePercentage().toFixed(1)}% of your ${STORAGE_LIMIT_GB}GB storage limit. Consider deleting some files.`);
+        }
+
   };
 
   const handleDelete = (fileId) => {
@@ -195,6 +223,17 @@ export default function Files() {
               <h1 className="text-2xl font-bold text-foreground">
                 File & Document Manager
               </h1>
+              <div className="flex items-center gap-2 mt-1">
+                    <div className={`w-32 h-2 rounded-full ${getStorageWarningLevel() === 'critical' ? 'bg-red-200' : getStorageWarningLevel() === 'warning' ? 'bg-yellow-200' : 'bg-gray-200'}`}>
+                      <div 
+                        className={`h-2 rounded-full transition-all ${getStorageWarningLevel() === 'critical' ? 'bg-red-500' : getStorageWarningLevel() === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'}`}
+                        style={{ width: `${Math.min(getStorageUsagePercentage(), 100)}%` }}
+                      ></div>
+                    </div>
+                    <span className="text-xs text-muted-foreground">
+                      {formatStorageSize(getCurrentStorageUsage())} / {STORAGE_LIMIT_GB}GB
+                    </span>
+                  </div>
             </div>
 
             {/* Upload Area */}
