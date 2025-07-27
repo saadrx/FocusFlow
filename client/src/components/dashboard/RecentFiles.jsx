@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { File, FileText, Image, Table, FileSpreadsheet } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
@@ -6,8 +5,41 @@ import { Button } from "@/components/ui/button";
 
 export default function RecentFiles() {
   const [uploadedFiles] = useLocalStorage("uploaded-files", []);
-  
-  
+
+  const STORAGE_LIMIT_GB = 10;
+  const STORAGE_LIMIT_BYTES = STORAGE_LIMIT_GB * 1024 * 1024 * 1024;
+
+  const getCurrentStorageUsage = () => {
+    let totalSize = 0;
+    uploadedFiles.forEach(file => {
+      totalSize += file.size || 0;
+    });
+    return totalSize;
+  };
+
+  const getStorageUsagePercentage = () => {
+    return (getCurrentStorageUsage() / STORAGE_LIMIT_BYTES) * 100;
+  };
+
+  const formatStorageSize = (bytes) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const getStorageWarningLevel = () => {
+    const percentage = getStorageUsagePercentage();
+    if (percentage > 90) {
+      return 'critical';
+    } else if (percentage > 75) {
+      return 'warning';
+    } else {
+      return 'normal';
+    }
+  };
+
   const recentFiles = uploadedFiles.slice(-4).reverse();
 
   const getFileType = (fileName) => {
