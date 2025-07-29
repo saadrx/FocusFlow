@@ -1,0 +1,419 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.spring {
+  --background: 120 30% 96%;
+  /* Very light green background */
+  --foreground: 120 50% 15%;
+  /* Dark green foreground */
+  --muted: 120 25% 92%;
+  /* Light green muted */
+  --muted-foreground: 120 30% 45%;
+  /* Medium green muted foreground */
+  --popover: 120 35% 98%;
+  /* Almost white green for popover */
+  --popover-foreground: 120 50% 15%;
+  /* Dark green for popover text */
+  --card: 120 30% 97%;
+  /* Light green for cards */
+  --card-foreground: 120 50% 15%;
+  /* Dark green for card text */
+  --border: 120 20% 88%;
+  /* Soft green border */
+  --input: 120 20% 88%;
+  /* Soft green input background */
+  --primary: 140 60% 70%;
+  /* Light spring green */
+  --primary-foreground: 120 50% 15%;
+  /* Dark green for primary text */
+  --secondary: 100 40% 85%;
+  /* Soft lime green */
+  --secondary-foreground: 120 50% 15%;
+  /* Dark green for secondary text */
+  --accent: 80 50% 80%;
+  /* Yellow-green accent */
+  --accent-foreground: 120 50% 15%;
+  /* Dark green for accent text */
+  --destructive: 0 70% 60%;
+  /* Warm red for destructive */
+  --destructive-foreground: 0 0% 98%;
+  /* White for destructive text */
+  --ring: 140 60% 70%;
+  /* Spring green ring */
+
+  /* Primary color shades for spring theme */
+  --primary-50: 140 80% 95%;
+  --primary-100: 140 75% 90%;
+  --primary-200: 140 70% 85%;
+  --primary-300: 140 65% 78%;
+  --primary-400: 140 62% 74%;
+  --primary-500: 140 60% 70%;
+  --primary-600: 140 58% 65%;
+  --primary-700: 140 55% 58%;
+  --primary-800: 140 50% 50%;
+  --primary-900: 140 45% 42%;
+
+  /* Secondary color shades for spring theme */
+  --secondary-50: 100 60% 95%;
+  --secondary-100: 100 55% 92%;
+  --secondary-200: 100 50% 88%;
+  --secondary-300: 100 45% 85%;
+  --secondary-400: 100 42% 82%;
+  --secondary-500: 100 40% 85%;
+  --secondary-600: 100 38% 78%;
+  --secondary-700: 100 35% 70%;
+  --secondary-800: 100 32% 62%;
+  --secondary-900: 100 30% 54%;
+
+  /* Accent color shades for spring theme */
+  --accent-50: 80 70% 92%;
+  --accent-100: 80 65% 88%;
+  --accent-200: 80 60% 85%;
+  --accent-300: 80 55% 82%;
+  --accent-400: 80 52% 80%;
+  --accent-500: 80 50% 80%;
+  --accent-600: 80 48% 75%;
+  --accent-700: 80 45% 68%;
+  --accent-800: 80 42% 60%;
+  --accent-900: 80 40% 52%;
+
+  /* Chart colors */
+  --chart-1: 140 60% 70%;
+  --chart-2: 100 40% 85%;
+  --chart-3: 80 50% 80%;
+  --chart-4: 160 50% 75%;
+  --chart-5: 120 45% 65%;
+}
+
+.summer {
+  --background: 200 30% 96%;
+  /* Very light blue background */
+  --foreground: 200 50% 15%;
+  /* Dark blue foreground */
+  --muted: 200 25% 92%;
+  /* Light blue muted */
+  --muted-foreground: 200 30% 45%;
+  /* Medium blue muted foreground */
+  --popover: 200 35% 98%;
+  /* Almost white blue for popover */
+  --popover-foreground: 200 50% 15%;
+  /* Dark blue for popover text */
+  --card: 200 30% 97%;
+  /* Light blue for cards */
+  --card-foreground: 200 50% 15%;
+  /* Dark blue for card text */
+  --border: 200 20% 88%;
+  /* Soft blue border */
+  --input: 200 20% 88%;
+  /* Soft blue input background */
+  --primary: 200 45% 62%;
+  /* Carolina blue 74B3CE */
+  --primary-foreground: 200 50% 15%;
+  /* Dark blue for primary text */
+  --secondary: 187 30% 56%;
+  /* Blue Munsell 508991 */
+  --secondary-foreground: 200 50% 15%;
+  /* Dark blue for secondary text */
+  --accent: 195 70% 16%;
+  /* Prussian blue 172A3A */
+  --accent-foreground: 200 30% 95%;
+  /* Light blue for accent text */
+  --destructive: 0 70% 60%;
+  /* Warm red for destructive */
+  --destructive-foreground: 0 0% 98%;
+  /* White for destructive text */
+  --ring: 200 45% 60%;
+  /* Carolina blue ring */
+
+  /* Primary color shades for summer theme (Carolina Blue) */
+  --primary-50: 200 65% 95%;
+  --primary-100: 200 60% 90%;
+  --primary-200: 200 55% 85%;
+  --primary-300: 200 50% 75%;
+  --primary-400: 200 48% 68%;
+  --primary-500: 200 45% 62%;
+  /* 74B3CE */
+  --primary-600: 200 43% 55%;
+  --primary-700: 200 40% 48%;
+  --primary-800: 200 38% 40%;
+  --primary-900: 200 35% 32%;
+
+  /* Secondary color shades for summer theme (Blue Munsell) */
+  --secondary-50: 187 50% 85%;
+  --secondary-100: 187 45% 80%;
+  --secondary-200: 187 40% 75%;
+  --secondary-300: 187 35% 68%;
+  --secondary-400: 187 32% 62%;
+  --secondary-500: 187 30% 56%;
+  /* 508991 */
+  --secondary-600: 187 28% 50%;
+  --secondary-700: 187 26% 44%;
+  --secondary-800: 187 24% 38%;
+  --secondary-900: 187 22% 32%;
+
+  /* Accent color shades for summer theme (Prussian Blue) */
+  --accent-50: 195 40% 40%;
+  --accent-100: 195 45% 35%;
+  --accent-200: 195 50% 30%;
+  --accent-300: 195 55% 25%;
+  --accent-400: 195 60% 20%;
+  --accent-500: 195 70% 16%;
+  /* 172A3A */
+  --accent-600: 195 75% 14%;
+  --accent-700: 195 80% 12%;
+  --accent-800: 195 85% 10%;
+  --accent-900: 195 90% 8%;
+
+  /* Chart colors */
+  --chart-1: 200 45% 62%;
+  --chart-2: 187 30% 56%;
+  --chart-3: 195 70% 16%;
+  --chart-4: 180 40% 20%;
+  --chart-5: 210 50% 40%;
+}
+
+.autumn {
+  --background: 25 30% 95%;
+  /* Very light warm background */
+  --foreground: 25 20% 15%;
+  /* Dark brown foreground */
+  --muted: 25 25% 90%;
+  /* Light warm muted */
+  --muted-foreground: 25 15% 45%;
+  /* Medium brown muted foreground */
+  --popover: 25 35% 98%;
+  /* Almost white warm for popover */
+  --popover-foreground: 25 20% 15%;
+  /* Dark brown for popover text */
+  --card: 25 30% 97%;
+  /* Light warm for cards */
+  --card-foreground: 25 20% 15%;
+  /* Dark brown for card text */
+  --border: 25 20% 85%;
+  /* Soft warm border */
+  --input: 25 20% 85%;
+  /* Soft warm input background */
+  --primary: 25 85% 62%;
+  /* Carrot orange F9A03F */
+  --primary-foreground: 25 20% 10%;
+  /* Dark brown for primary text */
+  --secondary: 50 75% 75%;
+  /* Jasmine F7D488 */
+  --secondary-foreground: 25 20% 10%;
+  /* Dark brown for secondary text */
+  --accent: 75 40% 85%;
+  /* Nyanza E9F7CA */
+  --accent-foreground: 25 20% 10%;
+  /* Dark brown for accent text */
+  --destructive: 0 70% 60%;
+  /* Warm red for destructive */
+  --destructive-foreground: 0 0% 98%;
+  /* White for destructive text */
+  --ring: 25 50% 70%;
+  /* Warm orange ring */
+
+  /* Primary color shades for autumn theme (Carrot Orange) */
+  --primary-50: 25 100% 95%;
+  --primary-100: 25 95% 90%;
+  --primary-200: 25 90% 85%;
+  --primary-300: 25 87% 75%;
+  --primary-400: 25 85% 68%;
+  --primary-500: 25 85% 62%;
+  /* F9A03F */
+  --primary-600: 25 83% 55%;
+  --primary-700: 25 80% 48%;
+  --primary-800: 25 75% 40%;
+  --primary-900: 25 70% 32%;
+
+  /* Secondary color shades for autumn theme (Jasmine) */
+  --secondary-50: 50 85% 95%;
+  --secondary-100: 50 82% 90%;
+  --secondary-200: 50 80% 85%;
+  --secondary-300: 50 78% 80%;
+  --secondary-400: 50 76% 77%;
+  --secondary-500: 50 75% 75%;
+  /* F7D488 */
+  --secondary-600: 50 73% 68%;
+  --secondary-700: 50 70% 60%;
+  --secondary-800: 50 65% 52%;
+  --secondary-900: 50 60% 44%;
+
+  /* Accent color shades for autumn theme (Nyanza) */
+  --accent-50: 75 50% 95%;
+  --accent-100: 75 45% 92%;
+  --accent-200: 75 42% 88%;
+  --accent-300: 75 40% 85%;
+  /* E9F7CA */
+  --accent-400: 75 38% 80%;
+  --accent-500: 75 35% 75%;
+  --accent-600: 75 32% 70%;
+  --accent-700: 75 30% 65%;
+  --accent-800: 75 28% 58%;
+  --accent-900: 75 25% 50%;
+
+  /* Chart colors */
+  --chart-1: 25 85% 62%;
+  --chart-2: 50 75% 75%;
+  --chart-3: 75 40% 85%;
+  --chart-4: 35 80% 70%;
+  --chart-5: 15 70% 55%;
+}
+
+.winter {
+  --background: 220 20% 95%;
+  /* Very light gray-blue background */
+  --foreground: 220 15% 20%;
+  /* Dark gray foreground */
+  --muted: 220 15% 88%;
+  /* Light gray muted */
+  --muted-foreground: 220 10% 50%;
+  /* Medium gray muted foreground */
+  --popover: 220 25% 98%;
+  /* Almost white for popover */
+  --popover-foreground: 220 15% 20%;
+  /* Dark gray for popover text */
+  --card: 220 20% 96%;
+  /* Light gray for cards */
+  --card-foreground: 220 15% 20%;
+  /* Dark gray for card text */
+  --border: 220 12% 82%;
+  /* Soft gray border */
+  --input: 220 12% 82%;
+  /* Soft gray input background */
+  --primary: 220 30% 60%;
+  /* Cool blue-gray */
+  --primary-foreground: 220 15% 15%;
+  /* Dark gray for primary text */
+  --secondary: 200 25% 70%;
+  /* Light blue-gray */
+  --secondary-foreground: 220 15% 15%;
+  /* Dark gray for secondary text */
+  --accent: 240 20% 75%;
+  /* Soft purple-gray */
+  --accent-foreground: 220 15% 15%;
+  /* Dark gray for accent text */
+  --destructive: 0 70% 60%;
+  /* Warm red for destructive */
+  --destructive-foreground: 0 0% 98%;
+  /* White for destructive text */
+  --ring: 220 30% 60%;
+  /* Cool blue-gray ring */
+
+  /* Primary color shades for winter theme */
+  --primary-50: 220 50% 95%;
+  --primary-100: 220 45% 90%;
+  --primary-200: 220 40% 85%;
+  --primary-300: 220 35% 75%;
+  --primary-400: 220 32% 68%;
+  --primary-500: 220 30% 60%;
+  --primary-600: 220 28% 52%;
+  --primary-700: 220 25% 45%;
+  --primary-800: 220 22% 38%;
+  --primary-900: 220 20% 30%;
+
+  /* Secondary color shades for winter theme */
+  --secondary-50: 200 40% 92%;
+  --secondary-100: 200 35% 88%;
+  --secondary-200: 200 30% 82%;
+  --secondary-300: 200 28% 76%;
+  --secondary-400: 200 26% 72%;
+  --secondary-500: 200 25% 70%;
+  --secondary-600: 200 23% 62%;
+  --secondary-700: 200 20% 55%;
+  --secondary-800: 200 18% 48%;
+  --secondary-900: 200 15% 40%;
+
+  /* Accent color shades for winter theme */
+  --accent-50: 240 35% 92%;
+  --accent-100: 240 30% 88%;
+  --accent-200: 240 25% 82%;
+  --accent-300: 240 22% 78%;
+  --accent-400: 240 20% 75%;
+  --accent-500: 240 20% 75%;
+  --accent-600: 240 18% 68%;
+  --accent-700: 240 15% 60%;
+  --accent-800: 240 12% 52%;
+  --accent-900: 240 10% 45%;
+
+  /* Chart colors */
+  --chart-1: 220 30% 60%;
+  --chart-2: 200 25% 70%;
+  --chart-3: 240 20% 75%;
+  --chart-4: 210 28% 65%;
+  --chart-5: 230 25% 68%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.day-with-event::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+.day-with-event.event-primary::after {
+  @apply bg-primary;
+}
+
+.day-with-event.event-secondary::after {
+  @apply bg-secondary;
+}
+
+.day-with-event.event-accent::after {
+  @apply bg-accent;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-input: 220 13% 91%;
+  --sidebar-ring: 262.1 83.3% 57.8%;
+}
+
+.purple {
+  --background: 270 20% 98%;
+  --foreground: 270 15% 9%;
+  --card: 270 20% 98%;
+  --card-foreground: 270 15% 9%;
+  --popover: 270 20% 98%;
+  --popover-foreground: 270 20% 4%;
+  --primary: 262.1 83.3% 57.8%;
+  --primary-foreground: 210 20% 98%;
+  --secondary: 270 20% 95%;
+  --secondary-foreground: 270 15% 25%;
+  --muted: 270 20% 95%;
+  --muted-foreground: 270 10% 45%;
+  --accent: 270 20% 95%;
+  --accent-foreground: 270 15% 25%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 270 20% 89%;
+  --input: 270 20% 89%;
+  --ring: 262.1 83.3% 57.8%;
+  --radius: 0.5rem;
+}
